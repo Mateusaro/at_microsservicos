@@ -8,7 +8,6 @@ public class TarefaDTO {
     private String prioridade;
     private String prazo;
 
-    // Construtores
     public TarefaDTO() {}
 
     public TarefaDTO(Long id, String titulo, String descricao, String prioridade, String prazo) {
@@ -19,7 +18,6 @@ public class TarefaDTO {
         this.prazo = prazo;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }

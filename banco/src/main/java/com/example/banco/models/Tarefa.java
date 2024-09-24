@@ -15,7 +15,6 @@ public class Tarefa {
     private String prioridade;
     private LocalDate prazo;
 
-    // Construtores
     public Tarefa() {}
 
     public Tarefa(String titulo, String descricao, String prioridade, LocalDate prazo) {
@@ -25,7 +24,6 @@ public class Tarefa {
         this.prazo = prazo;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }

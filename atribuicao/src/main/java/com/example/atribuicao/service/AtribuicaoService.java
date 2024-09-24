@@ -30,16 +30,13 @@ public class AtribuicaoService {
             throw new RuntimeException("Tarefa não encontrada");
         }
 
-        // Criar a atribuição com a tarefa existente
         Atribuicao atribuicao = new Atribuicao();
         atribuicao.setIdTarefa(atribuicaoDTO.getIdTarefa());
         atribuicao.setUsuarioAtribuido(atribuicaoDTO.getUsuarioAtribuido());
         atribuicao.setDataAtribuicao(LocalDateTime.now());
 
-        // Salvar a atribuição no banco de dados
         Atribuicao atribuicaoSalva = bancoClient.criarAtribuicao(atribuicao);
 
-        // Enviar a notificação ao usuário
         //notificacaoService.notificarUsuario(atribuicaoDTO.getUsuarioAtribuido(), tarefa.getTitulo()); // Assumindo que TarefaDTO tem um método getTitulo()
 
         return atribuicaoSalva;

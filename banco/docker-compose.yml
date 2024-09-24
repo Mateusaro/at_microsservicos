@@ -3,24 +3,24 @@ version: '3'
 services:
   banco:
     build:
-      context: ./  # Caminho para o diretório do Dockerfile da app3
+      context: ./
     container_name: banco_container
     ports:
-      - "8080:8080"  # Mapeando a porta 8080 do host para a porta 8080 do container
+      - "8080:8080"
     environment:
-      - server.port=8080  # Definindo a porta corretamente para o Spring Boot
+      - server.port=8080
     restart: unless-stopped
     networks:
       - app-network
 
   tarefas:
     build:
-      context: ../tarefas  # Caminho para o diretório do Dockerfile da app1
+      context: ../tarefas
     container_name: tarefas_container
     ports:
-      - "8081:8081"  # Mapeando a porta 8081 do host para a porta 8081 do container
+      - "8081:8081"
     environment:
-      - server.port=8081  # Definindo a porta corretamente para o Spring Boot
+      - server.port=8081
     depends_on:
       - banco
     restart: unless-stopped
@@ -29,12 +29,12 @@ services:
 
   atribuicao:
     build:
-      context: ../atribuicao  # Caminho para o diretório do Dockerfile da app2
+      context: ../atribuicao
     container_name: atribuicao_container
     ports:
-      - "8082:8082"  # Mapeando a porta 8082 do host para a porta 8082 do container
+      - "8082:8082"
     environment:
-      - server.port=8082  # Definindo a porta corretamente para o Spring Boot
+      - server.port=8082
     depends_on:
       - banco
       - tarefas

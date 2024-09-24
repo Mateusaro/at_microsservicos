@@ -10,7 +10,6 @@ public class AtribuicaoDTO {
     @NotNull
     private String usuarioAtribuido;
 
-    // Getters e Setters
     public Long getIdTarefa() {
         return idTarefa;
     }

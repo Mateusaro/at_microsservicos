@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "banco", url = "http://banco:8080") // Altere a URL para o serviço de banco de dados
+@FeignClient(name = "banco", url = "http://banco:8080")
 public interface BancoClient {
 
     @PostMapping("/atribuicoes")

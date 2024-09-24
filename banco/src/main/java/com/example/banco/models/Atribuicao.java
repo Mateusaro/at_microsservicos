@@ -14,7 +14,6 @@ public class Atribuicao {
     private String usuarioAtribuido;
     private LocalDateTime dataAtribuicao;
 
-    // Construtores
     public Atribuicao() {}
 
     public Atribuicao(Long idTarefa, String usuarioAtribuido, LocalDateTime dataAtribuicao) {
@@ -23,7 +22,6 @@ public class Atribuicao {
         this.dataAtribuicao = dataAtribuicao;
     }
 
-    // Getters e Setters
     public Long getId() {
         return id;
     }

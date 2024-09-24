@@ -37,13 +37,9 @@ class CriarTarefaControllerTest {
         tarefaDTO.setDescricao("Teste Descricao");
         tarefaDTO.setPrazo(LocalDate.now().plusDays(7));
         tarefaDTO.setPrioridade(Prioridade.ALTA);
-
         Tarefa tarefa = new Tarefa(1L, "Teste Titulo", "Teste Descricac", LocalDate.now().plusDays(7), Prioridade.ALTA);
         when(tarefaService.salvarTarefa(tarefaDTO)).thenReturn(tarefa);
-
         ResponseEntity<Tarefa> response = tarefaController.criarTarefa(tarefaDTO);
-
-        // Verificações
         assertEquals(200, response.getStatusCodeValue());
         assertEquals(tarefa, response.getBody());
     }
