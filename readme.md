@@ -59,3 +59,34 @@ kubectl port-forward deployment/atribuicao-deployment 8082:8082
 - Delete o Minikube: ```minikube delete```
 - Inicie novamente o Minikube ```minikube start```
 
+## Utilização no Postman
+
+### Criar Tarefa
+***POST***
+- http://localhost:8081/tarefas
+
+````
+{
+  "titulo": "Tarefa",
+  "descricao": "Descrição Tarefa",
+  "prazo": "2024-10-01",
+  "prioridade": "ALTA"
+}
+````
+***POST***
+### Criar Atribuição para Tarefa
+- http://localhost:8082/atribuicoes
+```
+{
+    "idTarefa": 1,
+    "usuarioAtribuido": "email@example.com"
+}
+```
+
+### Consulta Tarefas
+***GET***
+- http://localhost:8081/tarefas
+
+### Consulta Atribuições
+***GET***
+- http://localhost:8082/atribuicoes
