@@ -30,6 +30,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-maven-
 
+      - name: List directory contents
+        run: |
+          ls -R ../../
+
       - name: Build with Maven (banco)
         run: |
           cd ../../banco
