@@ -5,7 +5,7 @@ on:
     branches:
       - master
   workflow_run:
-    workflows: ["CD Workflow"]
+    workflows: ["CI Workflow"]
     types:
       - completed
 
