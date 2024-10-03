@@ -1,7 +1,20 @@
 version: '3'
 
 services:
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq_container
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: unless-stopped
+    networks:
+      - app-network
   banco:
+    image: banco:latest
     build:
       context: ./
     container_name: banco_container
@@ -9,11 +22,14 @@ services:
       - "8080:8080"
     environment:
       - server.port=8080
+    depends_on:
+      - rabbitmq
     restart: unless-stopped
     networks:
       - app-network
 
   tarefas:
+    image: tarefas:latest
     build:
       context: ../tarefas
     container_name: tarefas_container
@@ -23,11 +39,13 @@ services:
       - server.port=8081
     depends_on:
       - banco
+      - rabbitmq
     restart: unless-stopped
     networks:
       - app-network
 
   atribuicao:
+    image: atribuicao:latest
     build:
       context: ../atribuicao
     container_name: atribuicao_container
@@ -38,6 +56,7 @@ services:
     depends_on:
       - banco
       - tarefas
+      - rabbitmq
     restart: unless-stopped
     networks:
       - app-network

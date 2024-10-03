@@ -1,10 +1,12 @@
 package com.example.banco.models;
 
 import jakarta.persistence.*;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class Atribuicao {
+public class Atribuicao implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

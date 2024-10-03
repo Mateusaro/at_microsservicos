@@ -22,11 +22,11 @@ public class TarefaController {
     }
 
     @PostMapping
-    public ResponseEntity<Tarefa> criarTarefa(@Valid @RequestBody TarefaDTO tarefaDTO) {
+    public TarefaDTO criarTarefa(@Valid @RequestBody TarefaDTO tarefaDTO) {
         System.out.println("chegou dentro do controlador");
 
-        Tarefa novaTarefa = tarefaService.salvarTarefa(tarefaDTO);
-        return ResponseEntity.ok(novaTarefa);
+        tarefaService.salvarTarefa(tarefaDTO);
+        return tarefaDTO;
     }
 
     @GetMapping

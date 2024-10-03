@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "banco", url = "http://banco:8080")
+@FeignClient(name = "banco", url = "http://banco:8080") //banco
 public interface BancoClient {
     @PostMapping("/tarefas")
     Tarefa criarTarefa(@RequestBody TarefaDTO tarefa);

@@ -2,9 +2,10 @@ package com.example.tarefas.models;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Tarefa {
+public class Tarefa implements Serializable {
 
     private Long id;
 

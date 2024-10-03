@@ -2,10 +2,12 @@ package com.example.atribuicao.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class Atribuicao {
+public class Atribuicao implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

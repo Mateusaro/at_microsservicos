@@ -11,3 +11,32 @@ spec:
       port: 8080
       targetPort: 8080
       nodePort: 30006
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: banco-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: banco
+  template:
+    metadata:
+      labels:
+        app: banco
+    spec:
+      containers:
+        - name: banco
+          image: mateusol22/banco:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USER
+              value: "guest"
+            - name: RABBITMQ_PASS
+              value: "guest"

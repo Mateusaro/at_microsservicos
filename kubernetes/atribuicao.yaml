@@ -11,3 +11,32 @@ spec:
       port: 8082
       targetPort: 8082
       nodePort: 30008
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atribuicao-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: atribuicao
+  template:
+    metadata:
+      labels:
+        app: atribuicao
+    spec:
+      containers:
+        - name: atribuicao
+          image: mateusol22/atribuicao:latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: RABBITMQ_HOST
+              value: "rabbitmq"
+            - name: RABBITMQ_PORT
+              value: "5672"
+            - name: RABBITMQ_USER
+              value: "guest"
+            - name: RABBITMQ_PASS
+              value: "guest"
