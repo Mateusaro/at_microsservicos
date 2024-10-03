@@ -23,11 +23,9 @@ jobs:
           version: 'latest'
 
       - name: Configure Kubernetes context
-        env:
-          KUBECONFIG: ${{ secrets.KUBE_CONFIG }}
         run: |
-          echo "$KUBECONFIG" | base64 --decode > kubeconfig
-          export KUBECONFIG=$(pwd)/kubeconfig
+          minikube start
+          kubectl config use-context minikube
 
       - name: Apply Kubernetes manifests
         run: |
