@@ -32,11 +32,11 @@ jobs:
 
       - name: List directory contents
         run: |
-          ls -R ../../
+          ls -R ../
 
       - name: Build with Maven (banco)
         run: |
-          cd ../../banco
+          cd ../banco
           mvn clean package -DskipTests
 
       - name: Log in to Docker Hub
