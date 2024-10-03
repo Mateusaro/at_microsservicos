@@ -73,13 +73,14 @@ kubectl port-forward deployment/atribuicao-deployment 8082:8082
   "prioridade": "ALTA"
 }
 ````
-***POST***
+
 ### Criar Atribuição para Tarefa
+***POST***
 - http://localhost:8082/atribuicoes
 ```
 {
-    "idTarefa": 1,
-    "usuarioAtribuido": "email@example.com"
+    "idTarefa": {ID da Tarefa},
+    "usuarioAtribuido": {Email do usuário}
 }
 ```
 
