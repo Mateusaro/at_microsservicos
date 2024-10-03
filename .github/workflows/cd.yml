@@ -1,0 +1,37 @@
+name: CD Workflow
+
+on:
+  push:
+    branches:
+      - master
+  workflow_run:
+    workflows: ["CD Workflow"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v1
+        with:
+          version: 'latest'
+
+      - name: Configure Kubernetes context
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        run: |
+          echo "$KUBECONFIG" | base64 --decode > kubeconfig
+          export KUBECONFIG=$(pwd)/kubeconfig
+
+      - name: Apply Kubernetes manifests
+        run: |
+          kubectl apply -f ../../kubernetes/rabbitmq.yaml
+          kubectl apply -f ../../kubernetes/banco.yaml
+          kubectl apply -f ../../kubernetes/tarefas.yaml
+          kubectl apply -f ../../kubernetes/atribuicao.yaml
