@@ -31,7 +31,7 @@ jobs:
 
       - name: Apply Kubernetes manifests
         run: |
-          kubectl apply -f ../kubernetes/rabbitmq.yaml
-          kubectl apply -f ../kubernetes/banco.yaml
-          kubectl apply -f ../kubernetes/tarefas.yaml
-          kubectl apply -f ../kubernetes/atribuicao.yaml
+          kubectl apply -f kubernetes/rabbitmq.yaml
+          kubectl apply -f kubernetes/banco.yaml
+          kubectl apply -f kubernetes/tarefas.yaml
+          kubectl apply -f kubernetes/atribuicao.yaml
