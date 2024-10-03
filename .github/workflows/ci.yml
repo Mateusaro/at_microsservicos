@@ -33,4 +33,6 @@ jobs:
       - name: Build with Maven n(banco)
         run: |
           cd banco && mvn clean package -DskipTests
+          cd tarefas && mvn clean package -DskipTests
+          cd atribuicao && mvn clean package -DskipTests
 
